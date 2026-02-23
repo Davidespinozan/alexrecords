@@ -1,1018 +1,548 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ALEX RECORDS | Cantante | Culiacán × Madrid</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ALEX RECORDS — Artista Independiente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold: #C9A84C;
-      --gold-light: #E8C97A;
-      --cream: #F5EFE0;
-      --dark: #0D0D0D;
-      --dark2: #161616;
-      --dark3: #1F1F1F;
-      --red: #C0392B;
+      --ink:  #080808; --ink2: #111111; --ink3: #1c1c1c; --smoke: #2a2a2a;
+      --dust: #f0ead8; --paper:#faf7f0;
+      --gold: #b8973e; --gold2:#d4af5a; --gold3:#e8ca80;
+      --red:  #9b2335;
+      --sans: 'Space Grotesk', sans-serif;
+      --serif:'Cormorant Garamond', serif;
+      --disp: 'Anton', sans-serif;
     }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--ink);color:var(--dust);font-family:var(--sans);font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--dark);
-      color: var(--cream);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-      cursor: none;
+    /* CURSOR */
+    @media(hover:hover){
+      body{cursor:none}
+      #cur,#cur-r{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+      #cur{width:8px;height:8px;background:var(--gold2)}
+      #cur-r{width:32px;height:32px;border:1px solid rgba(212,175,90,.55);transition:transform .1s ease-out}
     }
-
-    /* Custom cursor */
-    .cursor {
-      width: 10px; height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
-    }
-    .cursor-ring {
-      width: 36px; height: 36px;
-      border: 1.5px solid var(--gold);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.12s ease-out, width 0.2s, height 0.2s;
-      opacity: 0.7;
-    }
-    body:hover .cursor { opacity: 1; }
 
     /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.4rem 4rem;
-      background: linear-gradient(to bottom, rgba(13,13,13,0.95) 0%, transparent 100%);
-    }
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      transition: opacity 0.2s, color 0.2s;
-    }
-    .nav-links a:hover { opacity: 1; color: var(--gold); }
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:linear-gradient(to bottom,rgba(8,8,8,.97) 60%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    .nav-logo{font-family:var(--disp);font-size:1.45rem;letter-spacing:.12em;color:var(--gold2)}
+    .nav-logo sub{color:var(--dust);opacity:.35;font-size:.55em;vertical-align:middle;margin-left:.3em;font-family:var(--sans);letter-spacing:.18em;text-transform:uppercase}
+    .nav-links{display:flex;gap:2.2rem;list-style:none}
+    .nav-links a{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;opacity:.5;transition:opacity .2s,color .2s}
+    .nav-links a:hover{opacity:1;color:var(--gold2)}
+    .nav-cta{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(212,175,90,.35);color:var(--gold2);padding:.5rem 1.2rem;transition:background .2s,border-color .2s}
+    .nav-cta:hover{background:rgba(212,175,90,.08);border-color:var(--gold2)}
+    .nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .nav-ham span{display:block;width:24px;height:1px;background:var(--dust);transition:.3s}
+
+    /* MOBILE NAV OVERLAY */
+    .nav-ov{display:none;position:fixed;inset:0;background:rgba(8,8,8,.97);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem}
+    .nav-ov.open{display:flex}
+    .nav-ov a{font-family:var(--disp);font-size:clamp(2rem,8vw,3.2rem);letter-spacing:.08em;opacity:.65;transition:opacity .2s,color .2s}
+    .nav-ov a:hover{opacity:1;color:var(--gold2)}
+    .nav-ov-close{position:absolute;top:1.4rem;right:2rem;font-size:2rem;color:var(--dust);opacity:.35;background:none;border:none;cursor:pointer;transition:opacity .2s}
+    .nav-ov-close:hover{opacity:1}
 
     /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 0 4rem;
-      position: relative;
-      overflow: hidden;
-    }
+    .hero{min-height:100svh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+    .hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 65% at 65% 45%,rgba(184,151,62,.08) 0%,transparent 65%),radial-gradient(ellipse 30% 40% at 15% 80%,rgba(155,35,53,.05) 0%,transparent 50%);animation:glowP 6s ease-in-out infinite alternate}
+    @keyframes glowP{from{opacity:.7}to{opacity:1}}
+    .hero::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");background-size:180px;pointer-events:none;opacity:.35;animation:grain .45s steps(2) infinite}
+    @keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-1%,-2%)}50%{transform:translate(2%,1%)}75%{transform:translate(-1%,3%)}100%{transform:translate(1%,-1%)}}
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
+    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 5rem 5.5rem;position:relative;z-index:2}
+    .hero-lbl{font-size:.67rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;opacity:0;animation:up .9s .15s forwards}
+    .hero-title{font-family:var(--disp);font-size:clamp(4rem,8vw,9rem);line-height:.9;letter-spacing:.01em;margin-bottom:2rem;opacity:0;animation:up .9s .3s forwards}
+    .hero-title .g{color:var(--gold2)}
+    .hero-title .sm{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.1rem,2vw,1.9rem);color:var(--dust);opacity:.5;display:block;letter-spacing:.04em;margin-top:.7rem}
+    .hero-quote{font-family:var(--serif);font-style:italic;font-size:clamp(.95rem,1.4vw,1.15rem);line-height:1.7;opacity:.65;max-width:400px;margin-bottom:2.5rem;opacity:0;animation:up .9s .5s forwards}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2.8rem;opacity:0;animation:up .9s .65s forwards}
+    .tag{font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(184,151,62,.3);color:var(--gold3);padding:.28rem .9rem;border-radius:999px;transition:background .2s}
+    .tag:hover{background:rgba(184,151,62,.07)}
+    .hero-act{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;opacity:0;animation:up .9s .8s forwards}
+    .btn-gold{display:inline-flex;align-items:center;gap:.55rem;background:var(--gold);color:var(--ink);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:.85rem 2rem;transition:background .25s,transform .2s}
+    .btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
+    .btn-ghost{font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;opacity:.5;display:flex;align-items:center;gap:.45rem;transition:opacity .2s,color .2s}
+    .btn-ghost::before{content:'↗';color:var(--gold2);font-size:.85rem}
+    .btn-ghost:hover{opacity:1;color:var(--gold2)}
 
-    /* Animated grain */
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: -200%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      background-size: 128px 128px;
-      opacity: 0.25;
-      pointer-events: none;
-      animation: grain 0.5s steps(2) infinite;
-    }
-    @keyframes grain {
-      0% { transform: translate(0, 0); }
-      25% { transform: translate(-2%, -3%); }
-      50% { transform: translate(3%, 2%); }
-      75% { transform: translate(-1%, 4%); }
-      100% { transform: translate(2%, -1%); }
-    }
+    .hero-right{position:relative;overflow:hidden;opacity:0;animation:fIn 1.2s .2s forwards}
+    .hero-right img{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.08);transition:transform 8s ease}
+    .hero-right:hover img{transform:scale(1.03)}
+    .hero-right::before{content:'';position:absolute;top:0;left:0;bottom:0;width:45%;background:linear-gradient(to right,var(--ink) 0%,transparent 100%);z-index:1;pointer-events:none}
+    .hero-right::after{content:'';position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(to top,var(--ink) 0%,transparent 100%);z-index:1;pointer-events:none}
+    .hero-badge{position:absolute;bottom:2.5rem;right:2rem;z-index:5;background:var(--red);padding:1rem 1.4rem;border-left:3px solid var(--gold)}
+    .badge-n{font-family:var(--disp);font-size:2.2rem;line-height:1}
+    .badge-t{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-top:.15rem}
+    .scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:5;opacity:0;animation:fIn 1s 2s forwards;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase}
+    .scroll-cue-ln{width:1px;height:46px;background:linear-gradient(to bottom,var(--gold2),transparent);animation:dropL 1.6s ease-in-out infinite}
+    @keyframes dropL{0%{transform:scaleY(0);transform-origin:top}49%{transform:scaleY(1);transform-origin:top}50%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+    @keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+    @keyframes fIn{from{opacity:0}to{opacity:1}}
 
-    .hero-text { z-index: 1; }
+    /* MARQUEE */
+    .marquee{background:var(--gold);padding:.65rem 0;overflow:hidden;white-space:nowrap}
+    .marquee-in{display:inline-block;animation:mq 20s linear infinite}
+    .marquee-in span{font-family:var(--disp);font-size:.85rem;letter-spacing:.18em;color:var(--ink);margin:0 2rem;text-transform:uppercase}
+    .mqdot{color:rgba(8,8,8,.3)}
+    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
-    }
+    /* SECTION BASE */
+    .sec{padding:7rem 5rem}
+    .sec-lbl{font-size:.63rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+    .sec-title{font-family:var(--disp);font-size:clamp(2rem,4vw,3.8rem);line-height:1;letter-spacing:.03em;margin-bottom:1.2rem}
+    .sec-body{font-size:.95rem;line-height:1.9;opacity:.62}
+    .gbar{width:46px;height:2px;background:var(--gold);margin:1.3rem 0}
 
-    .hero-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 9vw, 10rem);
-      line-height: 0.92;
-      letter-spacing: 0.02em;
-      margin-bottom: 1.2rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.4s forwards;
-    }
-    .hero-name span {
-      color: var(--gold);
-      display: block;
-    }
-
-    .hero-tagline {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.2rem;
-      color: var(--cream);
-      opacity: 0;
-      animation: fadeUp 0.8s 0.6s forwards;
-      margin-bottom: 2.5rem;
-      max-width: 400px;
-      line-height: 1.6;
-    }
-
-    .hero-genres {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.8s forwards;
-    }
-    .genre-pill {
-      border: 1px solid rgba(201,168,76,0.4);
-      color: var(--gold-light);
-      padding: 0.35rem 1rem;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1.2rem;
-      align-items: center;
-      opacity: 0;
-      animation: fadeUp 0.8s 1s forwards;
-    }
-    .btn-primary {
-      background: var(--gold);
-      color: var(--dark);
-      padding: 0.85rem 2.2rem;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      border: none;
-      cursor: none;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-      display: inline-block;
-    }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-    .btn-secondary {
-      color: var(--cream);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      opacity: 0.6;
-      transition: opacity 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .btn-secondary::before { content: '→'; color: var(--gold); }
-    .btn-secondary:hover { opacity: 1; }
-
-    /* Hero image area */
-    .hero-visual {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      animation: fadeIn 1.2s 0.3s forwards;
-    }
-    .hero-photo-frame {
-      position: relative;
-      width: 420px;
-      height: 560px;
-    }
-    .hero-photo-frame::before {
-      content: '';
-      position: absolute;
-      top: 20px; right: -20px;
-      width: 100%; height: 100%;
-      border: 1px solid rgba(201,168,76,0.3);
-      z-index: 0;
-    }
-    .hero-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: relative;
-      z-index: 1;
-      filter: grayscale(20%) contrast(1.05);
-    }
-    .hero-photo-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #1a1a1a 0%, #252525 50%, #1a1a1a 100%);
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      color: rgba(201,168,76,0.3);
-    }
-    .photo-icon { font-size: 3rem; }
-    .photo-label {
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 0.2em;
-      font-size: 0.85rem;
-      color: rgba(201,168,76,0.4);
-    }
-
-    .hero-badge {
-      position: absolute;
-      bottom: 60px;
-      left: -40px;
-      background: var(--red);
-      color: white;
-      padding: 1rem 1.4rem;
-      z-index: 2;
-    }
-    .badge-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      line-height: 1;
-    }
-    .badge-text {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.8;
-    }
-
-    /* Scroll indicator */
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0.4;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      animation: fadeIn 1s 1.5s forwards;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 50px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      animation: scrollDrop 1.5s ease-in-out infinite;
-    }
-    @keyframes scrollDrop {
-      0% { transform: scaleY(0); transform-origin: top; }
-      50% { transform: scaleY(1); transform-origin: top; }
-      51% { transform: scaleY(1); transform-origin: bottom; }
-      100% { transform: scaleY(0); transform-origin: bottom; }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* SECTION STYLES */
-    section { padding: 7rem 4rem; }
-
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: 1;
-      letter-spacing: 0.04em;
-      margin-bottom: 1.5rem;
-    }
-    .section-body {
-      font-size: 1rem;
-      line-height: 1.8;
-      opacity: 0.75;
-      max-width: 560px;
-    }
+    /* REVEAL */
+    .r{opacity:0;transform:translateY(26px);transition:opacity .85s ease,transform .85s ease}
+    .r.on{opacity:1;transform:none}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
     /* ABOUT */
-    .about {
-      background: var(--dark2);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-    .about-photos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      position: relative;
-    }
-    .photo-card {
-      aspect-ratio: 3/4;
-      background: var(--dark3);
-      overflow: hidden;
-      position: relative;
-    }
-    .photo-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(15%) contrast(1.05);
-      transition: transform 0.5s ease, filter 0.4s;
-    }
-    .photo-card:hover img { transform: scale(1.04); filter: grayscale(0%) contrast(1.1); }
-    .photo-card.tall { grid-row: span 2; }
-    .photo-placeholder {
-      width: 100%; height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1a1a1a, #222);
-      color: rgba(201,168,76,0.25);
-      font-size: 2rem;
-    }
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    .stat-item { }
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3rem;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .stat-desc {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.5;
-      margin-top: 0.3rem;
-    }
+    .about{background:var(--ink2);padding:7rem 5rem}
+    .about-in{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:270px 270px;gap:6px}
+    .mc{overflow:hidden;position:relative;background:var(--ink3)}
+    .mc.sp{grid-row:span 2}
+    .mc img{width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.07);transition:transform .65s ease,filter .5s}
+    .mc:hover img{transform:scale(1.06);filter:saturate(1.05) contrast(1.1)}
+    .mc::before{content:'';position:absolute;top:0;left:0;width:26px;height:26px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);z-index:2;opacity:0;transition:opacity .3s}
+    .mc:hover::before{opacity:1}
+    .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:2.8rem}
+    .stat{border-top:1px solid rgba(184,151,62,.18);padding-top:1.1rem}
+    .stat-n{font-family:var(--disp);font-size:2.6rem;color:var(--gold2);line-height:1}
+    .stat-d{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;opacity:.38;margin-top:.25rem}
 
-    /* GENEROS */
-    .generos { background: var(--dark); }
-    .genres-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5px;
-      margin-top: 4rem;
-      background: rgba(201,168,76,0.08);
-    }
-    .genre-card {
-      background: var(--dark2);
-      padding: 3rem 2.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-    .genre-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 0; height: 2px;
-      background: var(--gold);
-      transition: width 0.4s ease;
-    }
-    .genre-card:hover { background: #1a1a1a; }
-    .genre-card:hover::before { width: 100%; }
-    .genre-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1.2rem;
-      display: block;
-    }
-    .genre-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.6rem;
-    }
-    .genre-desc {
-      font-size: 0.82rem;
-      opacity: 0.5;
-      line-height: 1.7;
-    }
+    /* GALLERY STRIP */
+    .gstrip{background:var(--ink3);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .gstrip::-webkit-scrollbar{display:none}
+    .gstrip-in{display:flex;min-width:max-content}
+    .gsi{flex:0 0 33.333vw;aspect-ratio:3/4;overflow:hidden;position:relative}
+    .gsi img{width:100%;height:100%;object-fit:cover;filter:saturate(.72) contrast(1.07);transition:transform .7s,filter .5s}
+    .gsi:hover img{transform:scale(1.05);filter:saturate(1.1) contrast(1.1)}
+    .gsi::after{content:attr(data-label);position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.7) 0%,transparent 55%);display:flex;align-items:flex-end;padding:1.4rem;font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--dust);opacity:0;transition:opacity .3s}
+    .gsi:hover::after{opacity:1}
 
-    /* VIDEO SECTION */
-    .videos { background: var(--dark2); }
-    .videos-intro {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 4rem;
-    }
-    .videos-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5px;
-    }
-    .video-thumb {
-      aspect-ratio: 16/9;
-      background: var(--dark3);
-      position: relative;
-      overflow: hidden;
-      cursor: none;
-    }
-    .video-thumb::after {
-      content: '▶';
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: var(--gold);
-      background: rgba(0,0,0,0.5);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .video-thumb:hover::after { opacity: 1; }
-    .video-placeholder {
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      background: linear-gradient(135deg, #151515, #1e1e1e);
-      color: rgba(201,168,76,0.2);
-    }
-    .video-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(201,168,76,0.3);
-    }
-    .video-meta {
-      padding: 1rem 0;
-    }
-    .video-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
-      margin-bottom: 0.3rem;
-    }
-    .video-genre {
-      font-size: 0.7rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
+    /* GENRES */
+    .genres{background:var(--ink);padding:7rem 5rem}
+    .genres-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+    .gg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(184,151,62,.05)}
+    .gc{background:var(--ink2);padding:2.6rem 2rem;position:relative;overflow:hidden;transition:background .3s}
+    .gc:hover{background:var(--ink3)}
+    .gc::after{content:'';position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--gold);transition:width .45s ease}
+    .gc:hover::after{width:100%}
+    .gc-icon{font-size:2.1rem;margin-bottom:.9rem;display:block}
+    .gc-name{font-family:var(--disp);font-size:1.45rem;letter-spacing:.05em;margin-bottom:.55rem}
+    .gc-desc{font-size:.8rem;opacity:.42;line-height:1.78}
 
-    /* CONTACTO */
-    .contact {
-      background: var(--dark);
-      position: relative;
-      overflow: hidden;
-    }
-    .contact::before {
-      content: 'CONTACTO';
-      position: absolute;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18vw;
-      color: rgba(201,168,76,0.03);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: start;
-      position: relative;
-      z-index: 1;
-    }
-    .contact-form { }
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    .form-label {
-      display: block;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-      color: var(--gold);
-      opacity: 0.8;
-    }
-    .form-input, .form-textarea, .form-select {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(201,168,76,0.25);
-      color: var(--cream);
-      padding: 0.8rem 0;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-      cursor: none;
-    }
-    .form-input:focus, .form-textarea:focus, .form-select:focus {
-      border-color: var(--gold);
-    }
-    .form-textarea { resize: none; height: 100px; }
-    .form-select { appearance: none; background-image: none; }
-    .form-select option { background: var(--dark2); }
-    .contact-info { padding-top: 1rem; }
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
-      margin-bottom: 2.5rem;
-    }
-    .contact-icon {
-      width: 42px; height: 42px;
-      border: 1px solid rgba(201,168,76,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-      color: var(--gold);
-    }
-    .contact-item-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-    }
-    .contact-item-value {
-      font-size: 0.95rem;
-      opacity: 0.8;
-    }
+    /* VIDEOS */
+    .videos{background:var(--ink2);padding:7rem 5rem}
+    .vg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(184,151,62,.05);margin-top:3.5rem}
+    .vc{background:var(--ink3)}
+    .vt{aspect-ratio:16/9;position:relative;overflow:hidden}
+    .vp{width:100%;height:100%;background:linear-gradient(135deg,#0f0f0f 0%,#1a1a1a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+    .vp-ico{font-size:2.2rem;opacity:.25}
+    .vp-txt{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;opacity:.22}
+    .vt::after{content:'▶';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--gold2);background:rgba(8,8,8,.5);opacity:0;transition:opacity .3s;pointer-events:none}
+    .vt:hover::after{opacity:1}
+    .vm{padding:1.2rem 1.5rem 1.5rem;border-top:1px solid rgba(184,151,62,.07)}
+    .vg-lbl{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+    .v-title{font-family:var(--serif);font-size:.98rem;font-weight:400}
+    .cbanner{margin-top:1px;background:var(--ink3);padding:2.4rem 3rem;display:flex;align-items:center;gap:2rem;border-left:3px solid var(--gold)}
+    .cb-ico{font-size:2rem;flex-shrink:0}
+    .cb-h{font-family:var(--disp);font-size:1.25rem;letter-spacing:.06em;margin-bottom:.3rem}
+    .cb-p{font-size:.8rem;opacity:.42;line-height:1.72}
 
-    /* Social links */
-    .social-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 3rem;
-    }
-    .social-btn {
-      width: 44px; height: 44px;
-      border: 1px solid rgba(201,168,76,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .social-btn:hover {
-      background: rgba(201,168,76,0.1);
-      border-color: var(--gold);
-    }
+    /* CONTACT */
+    .contact{background:var(--ink);padding:7rem 5rem;position:relative;overflow:hidden}
+    .contact::before{content:'CONTACTO';position:absolute;font-family:var(--disp);font-size:clamp(5rem,18vw,17rem);top:50%;left:50%;transform:translate(-50%,-50%);color:rgba(184,151,62,.025);white-space:nowrap;pointer-events:none;letter-spacing:.06em}
+    .contact-in{display:grid;grid-template-columns:1fr 1fr;gap:6rem;position:relative;z-index:1}
+    .ci-item{display:flex;align-items:flex-start;gap:1.1rem;margin-bottom:2rem}
+    .ci-ico{width:38px;height:38px;flex-shrink:0;border:1px solid rgba(184,151,62,.22);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--gold)}
+    .ci-lbl{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.28rem}
+    .ci-val{font-size:.9rem;opacity:.65;line-height:1.5}
+    .socials{display:flex;gap:.75rem;margin-top:2.4rem}
+    .soc{width:40px;height:40px;border:1px solid rgba(184,151,62,.22);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:600;color:var(--gold);letter-spacing:.04em;transition:background .2s,border-color .2s}
+    .soc:hover{background:rgba(184,151,62,.08);border-color:var(--gold2)}
+    .fg{margin-bottom:1.5rem}
+    .fl{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.72;margin-bottom:.5rem}
+    .fi,.fta,.fsel{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(184,151,62,.18);color:var(--dust);padding:.72rem 0;font-family:var(--sans);font-size:.9rem;outline:none;transition:border-color .25s}
+    .fi::placeholder,.fta::placeholder{opacity:.28}
+    .fi:focus,.fta:focus,.fsel:focus{border-color:var(--gold2)}
+    .fta{resize:none;height:88px}
+    .fsel{appearance:none}
+    .fsel option{background:var(--ink2)}
+    .fsub{width:100%;margin-top:1rem;background:var(--gold);color:var(--ink);border:none;padding:.9rem;font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .25s,transform .2s}
+    .fsub:hover{background:var(--gold2);transform:translateY(-2px)}
 
     /* FOOTER */
-    footer {
-      background: var(--dark2);
-      padding: 3rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid rgba(201,168,76,0.08);
-    }
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-    }
-    .footer-copy {
-      font-size: 0.75rem;
-      opacity: 0.35;
-      letter-spacing: 0.08em;
-    }
-    .footer-origin {
-      font-size: 0.75rem;
-      color: var(--gold);
-      opacity: 0.5;
-      letter-spacing: 0.12em;
-    }
+    footer{background:var(--ink2);border-top:1px solid rgba(184,151,62,.07);padding:2.8rem 5rem;display:flex;align-items:center;justify-content:space-between}
+    .f-logo{font-family:var(--disp);font-size:1.6rem;color:var(--gold2);letter-spacing:.1em}
+    .f-copy{font-size:.7rem;opacity:.25}
+    .f-loc{font-size:.7rem;color:var(--gold);opacity:.4;letter-spacing:.1em}
 
-    /* Reveal animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+    /* MOBILE */
+    @media(max-width:768px){
+      nav{padding:1rem 1.4rem}
+      .nav-links,.nav-cta{display:none}
+      .nav-ham{display:flex}
+      .hero{grid-template-columns:1fr;grid-template-rows:auto}
+      .hero-left{padding:5.5rem 1.5rem 2.5rem;order:2}
+      .hero-right{order:1;height:65svh;width:100%}
+      .hero-right::before{width:25%}
+      .hero-badge{bottom:1.2rem;right:1.2rem}
+      .scroll-cue{display:none}
+      .sec,.about,.genres,.videos,.contact{padding:4.5rem 1.4rem}
+      .about-in{grid-template-columns:1fr;gap:2.5rem}
+      .mosaic{grid-template-rows:180px 180px;gap:4px}
+      .gsi{flex:0 0 82vw}
+      .genres-hd{flex-direction:column;align-items:flex-start;gap:.8rem}
+      .gg{grid-template-columns:1fr 1fr}
+      .vg{grid-template-columns:1fr}
+      .contact-in{grid-template-columns:1fr;gap:3rem}
+      footer{flex-direction:column;gap:.8rem;text-align:center;padding:2.2rem 1.4rem}
+      .cbanner{flex-direction:column;align-items:flex-start;gap:1rem;padding:1.8rem 1.5rem}
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Divider line */
-    .gold-line {
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
-      margin: 1.5rem 0;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      nav { padding: 1.2rem 2rem; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 2rem; padding-top: 7rem; }
-      .hero-visual { display: none; }
-      .about { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
-      .about-photos { display: none; }
-      section { padding: 5rem 2rem; }
-      .genres-grid { grid-template-columns: 1fr 1fr; }
-      .videos-grid { grid-template-columns: 1fr; }
-      .videos-intro { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    @media(min-width:769px) and (max-width:1100px){
+      .sec,.about,.genres,.videos,.contact{padding:6rem 3rem}
+      .hero-left{padding:9rem 3rem 5rem}
+      .gg{grid-template-columns:1fr 1fr}
+      .mosaic{grid-template-rows:220px 220px}
     }
   </style>
 </head>
 <body>
 
-  <!-- Custom cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+<div id="cur"></div>
+<div id="cur-r"></div>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="#">ALEX RECORDS</a>
-    <ul class="nav-links">
-      <li><a href="#sobre-mi">Sobre Mí</a></li>
-      <li><a href="#generos">Géneros</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
+<!-- MOBILE OVERLAY NAV -->
+<div class="nav-ov" id="navOv">
+  <button class="nav-ov-close" id="navClose">✕</button>
+  <a href="#sobre-mi" onclick="closeNav()">Sobre Mí</a>
+  <a href="#generos" onclick="closeNav()">Géneros</a>
+  <a href="#videos" onclick="closeNav()">Videos</a>
+  <a href="#contacto" onclick="closeNav()">Contacto</a>
+</div>
 
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-text">
-      <p class="hero-eyebrow">✦ Culiacán, Sinaloa · Madrid, España ✦</p>
-      <h1 class="hero-name">
-        Alex<br>
-        <span>Records</span>
-      </h1>
-      <p class="hero-tagline">"El talento que nació en Sinaloa y llegó a conquistar el mundo"</p>
-      <div class="hero-genres">
-        <span class="genre-pill">Corridos</span>
-        <span class="genre-pill">Bachata</span>
-        <span class="genre-pill">House</span>
-        <span class="genre-pill">Merengue</span>
-        <span class="genre-pill">+ más</span>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">ALEX<sub>RECORDS</sub></a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre Mí</a></li>
+    <li><a href="#generos">Géneros</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Contactar</a>
+  <button class="nav-ham" id="navOpen" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero" id="inicio">
+  <div class="hero-glow"></div>
+
+  <div class="hero-left">
+    <p class="hero-lbl">✦ Culiacán, Sinaloa &nbsp;·&nbsp; Madrid, España ✦</p>
+    <h1 class="hero-title">
+      ALEX
+      <span class="g">RECORDS</span>
+      <span class="sm">"El artista que el mundo está por descubrir"</span>
+    </h1>
+    <p class="hero-quote">
+      Soy el producto de la música sinaloense, el sabor caribeño y la energía europea. Cada canción que grabo lleva todo eso dentro.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Corridos</span>
+      <span class="tag">Bachata</span>
+      <span class="tag">House</span>
+      <span class="tag">Merengue</span>
+      <span class="tag">Pop Latino</span>
+    </div>
+    <div class="hero-act">
+      <a href="#videos" class="btn-gold"><span>▶</span>Ver Mi Trabajo</a>
+      <a href="#contacto" class="btn-ghost">Para Productoras</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_3437_ehd6qu.heic" alt="Alex Records" loading="eager">
+    <div class="hero-badge">
+      <div class="badge-n">18</div>
+      <div class="badge-t">Años · Sin límites</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-cue-ln"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-in">
+    <span>Alex Records</span><span class="mqdot">✦</span>
+    <span>Culiacán, Sinaloa</span><span class="mqdot">✦</span>
+    <span>Madrid, España</span><span class="mqdot">✦</span>
+    <span>Corridos · Bachata · House · Merengue</span><span class="mqdot">✦</span>
+    <span>Artista Independiente</span><span class="mqdot">✦</span>
+    <span>Buscando Productora</span><span class="mqdot">✦</span>
+    <span>Alex Records</span><span class="mqdot">✦</span>
+    <span>Culiacán, Sinaloa</span><span class="mqdot">✦</span>
+    <span>Madrid, España</span><span class="mqdot">✦</span>
+    <span>Corridos · Bachata · House · Merengue</span><span class="mqdot">✦</span>
+    <span>Artista Independiente</span><span class="mqdot">✦</span>
+    <span>Buscando Productora</span><span class="mqdot">✦</span>
+  </div>
+</div>
+
+<!-- ══════ SOBRE MÍ ══════ -->
+<section class="about" id="sobre-mi">
+  <div class="about-in">
+
+    <!-- MOSAIC — visible on ALL screens -->
+    <div class="mosaic r">
+      <div class="mc sp">
+        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_3214_bx1r0w.heic" alt="Alex — Foto 1" loading="lazy">
       </div>
-      <div class="hero-cta">
-        <a href="#videos" class="btn-primary">Ver Mi Trabajo</a>
-        <a href="#contacto" class="btn-secondary">Contactar para Proyectos</a>
+      <div class="mc r d1">
+        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_3437_ehd6qu.heic" alt="Alex — Foto 2" loading="lazy">
+      </div>
+      <div class="mc r d2">
+        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_4248_z4zb2d.heic" alt="Alex — Foto 3" loading="lazy">
       </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="hero-photo-frame">
-        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_3437_ehd6qu.heic" alt="Alex Records" class="hero-photo" style="width:100%;height:100%;object-fit:cover;position:relative;z-index:1;">
-        <div class="hero-badge">
-          <div class="badge-num">18</div>
-          <div class="badge-text">Años de talento</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- SOBRE MÍ -->
-  <section class="about" id="sobre-mi">
-    <div class="about-photos">
-      <div class="photo-card tall">
-        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_3214_bx1r0w.heic" alt="Alex foto 1" style="width:100%;height:100%;object-fit:cover;filter:grayscale(15%) contrast(1.05);transition:transform 0.5s,filter 0.4s;">
-      </div>
-      <div class="photo-card">
-        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_3437_ehd6qu.heic" alt="Alex foto 2" style="width:100%;height:100%;object-fit:cover;filter:grayscale(15%) contrast(1.05);transition:transform 0.5s,filter 0.4s;">
-      </div>
-      <div class="photo-card">
-        <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_4248_z4zb2d.heic" alt="Alex foto 3" style="width:100%;height:100%;object-fit:cover;filter:grayscale(15%) contrast(1.05);transition:transform 0.5s,filter 0.4s;">
-      </div>
-    </div>
-
-    <div class="about-content reveal">
-      <p class="section-label">✦ Mi Historia</p>
-      <h2 class="section-title">Nacido para el Escenario</h2>
-      <div class="gold-line"></div>
-      <p class="section-body">
-        Soy un joven de 18 años originario de <strong>Culiacán, Sinaloa</strong>, actualmente viviendo en <strong>Madrid, España</strong>. Desde pequeño la música fue mi pasión; crecí escuchando corridos, bachata, merengue y me enamoré de todos los géneros que tocan el alma.
+    <!-- TEXT -->
+    <div class="r d2">
+      <p class="sec-lbl">✦ Mi Historia</p>
+      <h2 class="sec-title">Nacido para el Escenario</h2>
+      <div class="gbar"></div>
+      <p class="sec-body">
+        Tengo 18 años, soy de <strong style="color:var(--dust);opacity:1">Culiacán, Sinaloa</strong> — la ciudad que me enseñó a sentir la música de verdad. Hoy vivo en <strong style="color:var(--dust);opacity:1">Madrid, España</strong>, donde sigo trabajando cada día para convertirme en el artista que siempre soñé ser.
       </p>
       <br>
-      <p class="section-body">
-        Mi objetivo es claro: convertirme en un artista profesional reconocido a nivel internacional. Subo contenido constantemente para que las mejores productoras del mundo puedan descubrir mi voz, mi estilo y mi versatilidad.
+      <p class="sec-body">
+        Mi música no tiene género fijo: soy corridos, soy bachata, soy merengue, soy house. La versatilidad es mi mayor fortaleza. Subo contenido constantemente porque el talento hay que mostrarlo, no guardarlo.
       </p>
-
+      <br>
+      <p class="sec-body">
+        Busco una productora seria que vea lo que hay aquí: un artista joven, dedicado, con hambre de éxito y el sonido que el mercado latino necesita.
+      </p>
       <div class="about-stats">
-        <div class="stat-item">
-          <div class="stat-num">5+</div>
-          <div class="stat-desc">Géneros musicales</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">MX</div>
-          <div class="stat-desc">Orgullo Sinaloense</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">ES</div>
-          <div class="stat-desc">Basado en Madrid</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">∞</div>
-          <div class="stat-desc">Contenido en camino</div>
-        </div>
+        <div class="stat r d1"><div class="stat-n">5+</div><div class="stat-d">Géneros musicales</div></div>
+        <div class="stat r d2"><div class="stat-n">18</div><div class="stat-d">Años de talento</div></div>
+        <div class="stat r d3"><div class="stat-n">MX</div><div class="stat-d">Orgullo Sinaloense</div></div>
+        <div class="stat r d4"><div class="stat-n">ES</div><div class="stat-d">Basado en Madrid</div></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- GÉNEROS -->
-  <section class="generos" id="generos">
-    <div class="reveal">
-      <p class="section-label">✦ Versatilidad Musical</p>
-      <h2 class="section-title">Los Géneros que Domino</h2>
+<!-- ══════ GALLERY STRIP (horizontal scroll — all 3 photos) ══════ -->
+<div class="gstrip">
+  <div class="gstrip-in">
+    <div class="gsi" data-label="El artista">
+      <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_3437_ehd6qu.heic" alt="Alex foto" loading="lazy">
     </div>
-    <div class="genres-grid">
-      <div class="genre-card reveal">
-        <span class="genre-icon">🤠</span>
-        <div class="genre-name">Corridos</div>
-        <p class="genre-desc">La sangre sinaloense corre fuerte. Los corridos son mi raíz, mi identidad, el género con el que crecí y el que llevo en el alma.</p>
+    <div class="gsi" data-label="Culiacán × Madrid">
+      <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_3214_bx1r0w.heic" alt="Alex foto" loading="lazy">
+    </div>
+    <div class="gsi" data-label="Siempre grabando">
+      <img src="https://res.cloudinary.com/dona0k7rk/image/upload/v1771852258/IMG_4248_z4zb2d.heic" alt="Alex foto" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- ══════ GÉNEROS ══════ -->
+<section class="genres" id="generos">
+  <div class="genres-hd r">
+    <div>
+      <p class="sec-lbl">✦ Versatilidad Musical</p>
+      <h2 class="sec-title">Los Géneros que Domino</h2>
+    </div>
+    <p class="sec-body" style="max-width:320px;text-align:right">
+      Un artista sin límites, preparado para cualquier proyecto musical.
+    </p>
+  </div>
+  <div class="gg">
+    <div class="gc r">
+      <span class="gc-icon">🤠</span>
+      <div class="gc-name">Corridos</div>
+      <p class="gc-desc">La sangre sinaloense. Mi raíz y mi identidad. El género que me enseñó a amar la música y que llevo grabado en el alma.</p>
+    </div>
+    <div class="gc r d1">
+      <span class="gc-icon">🎸</span>
+      <div class="gc-name">Bachata</div>
+      <p class="gc-desc">El ritmo del amor. La bachata me permite mostrar el lado más emotivo de mi voz y llegar directo al corazón del oyente.</p>
+    </div>
+    <div class="gc r d2">
+      <span class="gc-icon">🥁</span>
+      <div class="gc-name">Merengue</div>
+      <p class="gc-desc">Sabor caribeño y energía pura. Fiesta, movimiento y alegría — cuando lo canto se siente completo.</p>
+    </div>
+    <div class="gc r d1">
+      <span class="gc-icon">🎧</span>
+      <div class="gc-name">House / Electrónica</div>
+      <p class="gc-desc">La fusión moderna. Madrid me abrió las puertas a los sonidos electrónicos más actuales de Europa.</p>
+    </div>
+    <div class="gc r d2">
+      <span class="gc-icon">🎤</span>
+      <div class="gc-name">Pop Latino</div>
+      <p class="gc-desc">Tradición y modernidad en perfecta mezcla. Tengo la voz y el rango para dominar el pop latino con autenticidad.</p>
+    </div>
+    <div class="gc r d3">
+      <span class="gc-icon">⭐</span>
+      <div class="gc-name">Y Mucho Más</div>
+      <p class="gc-desc">La música no tiene límites y yo tampoco. Exploración constante, nuevas influencias, siempre creciendo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ VIDEOS ══════ -->
+<section class="videos" id="videos">
+  <div class="r">
+    <p class="sec-lbl">✦ Contenido</p>
+    <h2 class="sec-title">Mis Grabaciones</h2>
+  </div>
+  <div class="vg">
+    <div class="vc r">
+      <div class="vt"><div class="vp"><span class="vp-ico">🎬</span><span class="vp-txt">Próximamente</span></div></div>
+      <div class="vm"><div class="vg-lbl">Corridos Tumbados</div><div class="v-title">Corrido al Estilo Culichi</div></div>
+    </div>
+    <div class="vc r d1">
+      <div class="vt"><div class="vp"><span class="vp-ico">🎬</span><span class="vp-txt">Próximamente</span></div></div>
+      <div class="vm"><div class="vg-lbl">Bachata Romántica</div><div class="v-title">Bachata Session — Madrid</div></div>
+    </div>
+    <div class="vc r d2">
+      <div class="vt"><div class="vp"><span class="vp-ico">🎬</span><span class="vp-txt">Próximamente</span></div></div>
+      <div class="vm"><div class="vg-lbl">House / Fusión</div><div class="v-title">Flow Desde Madrid</div></div>
+    </div>
+  </div>
+  <div class="cbanner r">
+    <span class="cb-ico">📲</span>
+    <div>
+      <div class="cb-h">Contenido Nuevo Cada Semana</div>
+      <p class="cb-p">Corridos, bachata, merengue, house y más. Sígueme en redes para no perderte ninguna grabación. Siempre activo, siempre creciendo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CONTACTO ══════ -->
+<section class="contact" id="contacto">
+  <div class="contact-in">
+
+    <div class="r">
+      <p class="sec-lbl">✦ Para Productoras &amp; Disqueras</p>
+      <h2 class="sec-title">Hablemos de Música</h2>
+      <div class="gbar"></div>
+      <p class="sec-body" style="margin-bottom:2.2rem">
+        Si eres productor, mánager, A&R o representante de una disquera — aquí estoy. Listo para audiciones, grabaciones en estudio, colaboraciones y proyectos serios. El talento que buscas está en esta página.
+      </p>
+      <div class="ci-item">
+        <div class="ci-ico">📍</div>
+        <div>
+          <div class="ci-lbl">Ubicación</div>
+          <div class="ci-val">Madrid, España<br><span style="opacity:.45;font-size:.85em">Originario de Culiacán, Sinaloa, México</span></div>
+        </div>
       </div>
-      <div class="genre-card reveal">
-        <span class="genre-icon">🎸</span>
-        <div class="genre-name">Bachata</div>
-        <p class="genre-desc">El ritmo del amor. La bachata me permite mostrar el lado más romántico y emotivo de mi voz, llegando directo al corazón del oyente.</p>
+      <div class="ci-item">
+        <div class="ci-ico">📧</div>
+        <div>
+          <div class="ci-lbl">Email Profesional</div>
+          <div class="ci-val">tuEmail@gmail.com</div>
+        </div>
       </div>
-      <div class="genre-card reveal">
-        <span class="genre-icon">🎵</span>
-        <div class="genre-name">Merengue</div>
-        <p class="genre-desc">Sabor caribeño con actitud. El merengue es fiesta, energía y alegría — y yo lo traigo completo cuando subo al escenario.</p>
+      <div class="ci-item">
+        <div class="ci-ico">📱</div>
+        <div>
+          <div class="ci-lbl">WhatsApp</div>
+          <div class="ci-val">+34 XXX XXX XXX</div>
+        </div>
       </div>
-      <div class="genre-card reveal">
-        <span class="genre-icon">🎧</span>
-        <div class="genre-name">House / Electrónica</div>
-        <p class="genre-desc">La fusión moderna. Explorar el house me permite conectar con las nuevas generaciones y experimentar con sonidos innovadores.</p>
-      </div>
-      <div class="genre-card reveal">
-        <span class="genre-icon">🎤</span>
-        <div class="genre-name">Pop Latino</div>
-        <p class="genre-desc">La mezcla perfecta de tradición y modernidad. Mi voz tiene el rango y la emoción para dominar el pop latino con autenticidad.</p>
-      </div>
-      <div class="genre-card reveal">
-        <span class="genre-icon">🌟</span>
-        <div class="genre-name">&amp; Mucho Más</div>
-        <p class="genre-desc">La música no tiene límites y yo tampoco. Constantemente exploro nuevos géneros, colaboraciones y estilos para seguir creciendo.</p>
+      <div class="socials">
+        <a class="soc" href="#" title="Instagram">IG</a>
+        <a class="soc" href="#" title="TikTok">TK</a>
+        <a class="soc" href="#" title="YouTube">YT</a>
+        <a class="soc" href="#" title="Spotify">SP</a>
       </div>
     </div>
-  </section>
 
-  <!-- VIDEOS -->
-  <section class="videos" id="videos">
-    <div class="videos-intro reveal">
-      <div>
-        <p class="section-label">✦ Contenido</p>
-        <h2 class="section-title">Mis Grabaciones</h2>
-      </div>
-      <a href="#contacto" class="btn-secondary" style="opacity:0.8;">Ver más en redes →</a>
-    </div>
-    <div class="videos-grid">
-
-      <div>
-        <div class="video-thumb reveal">
-          <!-- Aquí puedes embeber un iframe de YouTube o poner un thumbnail -->
-          <div class="video-placeholder">
-            <span style="font-size:2.5rem">🎬</span>
-            <span class="video-label">Sube tu video aquí</span>
-          </div>
+    <div class="r d2">
+      <form id="cForm">
+        <div class="fg">
+          <label class="fl">Nombre / Empresa</label>
+          <input type="text" class="fi" placeholder="Tu nombre o disquera" required>
         </div>
-        <div class="video-meta">
-          <div class="video-title">Corrido al Estilo Culichi</div>
-          <div class="video-genre">Corridos Tumbados</div>
+        <div class="fg">
+          <label class="fl">Email</label>
+          <input type="email" class="fi" placeholder="tu@empresa.com" required>
         </div>
-      </div>
-
-      <div>
-        <div class="video-thumb reveal">
-          <div class="video-placeholder">
-            <span style="font-size:2.5rem">🎬</span>
-            <span class="video-label">Sube tu video aquí</span>
-          </div>
+        <div class="fg">
+          <label class="fl">Tipo de Propuesta</label>
+          <select class="fsel">
+            <option value="">Selecciona una opción</option>
+            <option>Contrato Discográfico</option>
+            <option>Producción Musical</option>
+            <option>Management / Representación</option>
+            <option>Colaboración Artística</option>
+            <option>Eventos &amp; Shows</option>
+            <option>Audición</option>
+            <option>Otro</option>
+          </select>
         </div>
-        <div class="video-meta">
-          <div class="video-title">Bachata Session</div>
-          <div class="video-genre">Bachata Romántica</div>
+        <div class="fg">
+          <label class="fl">Mensaje</label>
+          <textarea class="fta" placeholder="Cuéntame sobre tu propuesta..." required></textarea>
         </div>
-      </div>
-
-      <div>
-        <div class="video-thumb reveal">
-          <div class="video-placeholder">
-            <span style="font-size:2.5rem">🎬</span>
-            <span class="video-label">Sube tu video aquí</span>
-          </div>
-        </div>
-        <div class="video-meta">
-          <div class="video-title">Flow Desde Madrid</div>
-          <div class="video-genre">House / Fusión</div>
-        </div>
-      </div>
-
+        <button type="submit" class="fsub" id="fsub">Enviar Propuesta →</button>
+      </form>
     </div>
 
-    <div style="margin-top:3rem; padding: 2.5rem; background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.12); display:flex; align-items:center; gap:2rem;" class="reveal">
-      <span style="font-size:2.5rem">📲</span>
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:0.06em; margin-bottom:0.3rem;">Contenido Nuevo Constantemente</div>
-        <div style="font-size:0.85rem; opacity:0.55; line-height:1.7;">Sígueme en mis redes sociales para ver videos nuevos cada semana. Corridos, bachata, merengue, house y mucho más — siempre en crecimiento.</div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACTO -->
-  <section class="contact" id="contacto">
-    <div class="contact-inner">
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">ALEX RECORDS</div>
+  <div class="f-copy">© 2025 Alex Records · Todos los derechos reservados</div>
+  <div class="f-loc">🇲🇽 Culiacán &nbsp;×&nbsp; 🇪🇸 Madrid</div>
+</footer>
 
-      <div class="reveal">
-        <p class="section-label">✦ Para Productoras y Colaboraciones</p>
-        <h2 class="section-title">Hablemos de Música</h2>
-        <div class="gold-line"></div>
-        <p class="section-body" style="margin-bottom:2rem;">
-          ¿Eres productor, manager, o representante de una disquera? Me interesa escucharte. Estoy listo para audiciones, grabaciones, colaboraciones y proyectos serios.
-        </p>
-
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <div class="contact-item-label">Ubicación</div>
-            <div class="contact-item-value">Madrid, España<br><small style="opacity:0.5;">Originario de Culiacán, Sinaloa, México</small></div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📧</div>
-          <div>
-            <div class="contact-item-label">Email Profesional</div>
-            <div class="contact-item-value">tuEmail@gmail.com</div>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📱</div>
-          <div>
-            <div class="contact-item-label">WhatsApp / Teléfono</div>
-            <div class="contact-item-value">+34 XXX XXX XXX</div>
-          </div>
-        </div>
-
-        <div class="social-row">
-          <a class="social-btn" href="#" title="Instagram">IG</a>
-          <a class="social-btn" href="#" title="TikTok">TK</a>
-          <a class="social-btn" href="#" title="YouTube">YT</a>
-          <a class="social-btn" href="#" title="Spotify">SP</a>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <form onsubmit="handleForm(event)">
-          <div class="form-group">
-            <label class="form-label">Nombre / Empresa</label>
-            <input type="text" class="form-input" placeholder="Tu nombre o disquera" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-input" placeholder="tu@email.com" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Tipo de Colaboración</label>
-            <select class="form-select">
-              <option value="">Selecciona una opción</option>
-              <option>Producción Musical</option>
-              <option>Contrato Discográfico</option>
-              <option>Colaboración Artística</option>
-              <option>Eventos y Shows</option>
-              <option>Representación / Management</option>
-              <option>Otro</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Mensaje</label>
-            <textarea class="form-textarea" placeholder="Cuéntame sobre tu propuesta..." required></textarea>
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%; margin-top:1rem; cursor:none;">
-            Enviar Mensaje
-          </button>
-        </form>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Alex Records</div>
-    <div class="footer-copy">© 2025 Alex Records · Todos los derechos reservados</div>
-    <div class="footer-origin">🇲🇽 Culiacán, Sinaloa &nbsp;×&nbsp; 🇪🇸 Madrid, España</div>
-  </footer>
-
-  <script>
-    // Custom cursor
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-    function animateRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-    }, { threshold: 0.15 });
-    reveals.forEach(el => observer.observe(el));
-
-    // Form handler
-    function handleForm(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
-      btn.textContent = '✓ Mensaje Enviado';
-      btn.style.background = '#2ecc71';
-      btn.style.color = 'white';
-      setTimeout(() => { btn.textContent = 'Enviar Mensaje'; btn.style.background = ''; btn.style.color = ''; e.target.reset(); }, 3000);
-    }
-  </script>
+<script>
+  // CURSOR
+  const cur=document.getElementById('cur'), curR=document.getElementById('cur-r');
+  let mx=0,my=0,rx=0,ry=0;
+  if(window.matchMedia('(hover:hover)').matches){
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.cssText=`left:${mx}px;top:${my}px`});
+    (function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.cssText=`left:${rx}px;top:${ry}px`;requestAnimationFrame(loop)})();
+  }
+  // MOBILE NAV
+  const ov=document.getElementById('navOv');
+  document.getElementById('navOpen').onclick=()=>ov.classList.add('open');
+  document.getElementById('navClose').onclick=()=>ov.classList.remove('open');
+  function closeNav(){ov.classList.remove('open')}
+  // REVEAL
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.1});
+  document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+  // FORM
+  document.getElementById('cForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const b=document.getElementById('fsub');
+    b.textContent='✓ Mensaje Enviado';b.style.background='#2d6a4f';b.style.color='#fff';
+    setTimeout(()=>{b.textContent='Enviar Propuesta →';b.style.background='';b.style.color='';this.reset()},3500);
+  });
+</script>
 </body>
 </html>
